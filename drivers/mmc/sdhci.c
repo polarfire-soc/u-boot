@@ -77,6 +77,7 @@ static void sdhci_prepare_dma(struct sdhci_host *host, struct mmc_data *data,
 	dma_addr_t dma_addr;
 	unsigned char ctrl;
 	void *buf;
+	u16 hv64 = 0;
 
 	if (data->flags == MMC_DATA_READ)
 		buf = data->dest;
@@ -85,8 +86,12 @@ static void sdhci_prepare_dma(struct sdhci_host *host, struct mmc_data *data,
 
 	ctrl = sdhci_readb(host, SDHCI_HOST_CONTROL);
 	ctrl &= ~SDHCI_CTRL_DMA_MASK;
-	if (host->flags & USE_ADMA64)
+	if (host->flags & USE_ADMA64) {
 		ctrl |= SDHCI_CTRL_ADMA64;
+		hv64 = sdhci_readw(host, SDHCI_HOST_CONTROL2);
+		hv64 |= SDHCI_CTRL_HV4E_A64B_ENABLE;
+		sdhci_writew(host, hv64, SDHCI_HOST_CONTROL2);
+	}
 	else if (host->flags & USE_ADMA)
 		ctrl |= SDHCI_CTRL_ADMA32;
 	sdhci_writeb(host, ctrl, SDHCI_HOST_CONTROL);

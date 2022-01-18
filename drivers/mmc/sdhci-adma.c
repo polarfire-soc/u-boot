@@ -24,6 +24,7 @@ static void sdhci_adma_desc(struct sdhci_adma_desc *desc,
 	desc->addr_lo = lower_32_bits(addr);
 #ifdef CONFIG_DMA_ADDR_T_64BIT
 	desc->addr_hi = upper_32_bits(addr);
+	desc->rsvd1 = 0;
 #endif
 }
 

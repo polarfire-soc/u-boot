@@ -165,6 +165,7 @@
 #define  SDHCI_CTRL_EXEC_TUNING	0x0040
 #define  SDHCI_CTRL_TUNED_CLK	0x0080
 #define  SDHCI_CTRL_PRESET_VAL_ENABLE	0x8000
+#define  SDHCI_CTRL_HV4E_A64B_ENABLE	0x3000
 
 #define SDHCI_CAPABILITIES	0x40
 #define  SDHCI_TIMEOUT_CLK_MASK	0x0000003F
@@ -302,6 +303,7 @@ struct sdhci_adma_desc {
 	u32 addr_lo;
 #ifdef CONFIG_DMA_ADDR_T_64BIT
 	u32 addr_hi;
+	u32 rsvd1;
 #endif
 } __packed;
 
