@@ -192,6 +192,12 @@ config MESON_SPIFC
 	  This driver can be used to access the SPI NOR flash chips on
 	  Amlogic Meson SoCs.
 
+config MICROCHIP_QSPI
+	bool "Microchip Quad SPI driver"
+	help
+	  Enable the Microchip Quad SPI controller driver. This driver can be
+	  used on Polarfire SoCs.
+
 config MPC8XX_SPI
 	bool "MPC8XX SPI Driver"
 	depends on MPC8xx
