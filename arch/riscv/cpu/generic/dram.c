@@ -23,7 +23,7 @@ int dram_init_banksize(void)
 
 ulong board_get_usable_ram_top(ulong total_size)
 {
-#if !defined(CONFIG_TARGET_MICROCHIP_ICICLE)
+#if !defined(CONFIG_TARGET_MICROCHIP_ICICLE) && !defined(CONFIG_TARGET_MICROCHIP_SEVKIT)
 	/*
 	 * Ensure that we run from first 4GB so that all
 	 * addresses used by U-Boot are 32bit addresses.

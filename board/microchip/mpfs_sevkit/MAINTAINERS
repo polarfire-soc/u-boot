@@ -1,0 +1,7 @@
+Microchip MPFS sev-kit
+M:	Vattipalli Praveen <praveen.kumar@microchip.com>
+M:	Shravan Chippa <shravan.chippa@microchip.com>
+S:	Maintained
+F:	board/microchip/mpfs_sevkit/
+F:	include/configs/microchip_mpfs_sevkit.h
+F:	configs/microchip_mpfs_sevkit_defconfig
