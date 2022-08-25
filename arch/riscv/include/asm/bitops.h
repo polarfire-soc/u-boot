@@ -32,7 +32,7 @@
 /*
  * Function prototypes to keep gcc -Wall happy.
  */
-static inline void __set_bit(int nr, void *addr)
+static inline void set_bit(int nr, void *addr)
 {
 	int *a = (int *)addr;
 	int mask;
@@ -42,9 +42,28 @@ static inline void __set_bit(int nr, void *addr)
 	*a |= mask;
 }
 
+static inline void __set_bit(int nr, void *addr)
+{
+	int *a = (int *)addr;
+	int mask;
+
+	a += nr >> 5;
+	mask = 1 << (nr & 0x1f);
+	*a |= mask;
+}
 #define PLATFORM__SET_BIT
 
 static inline void __clear_bit(int nr, void *addr)
+{
+	int *a = (int *)addr;
+	int mask;
+
+	a += nr >> 5;
+	mask = 1 << (nr & 0x1f);
+	*a &= ~mask;
+}
+
+static inline void clear_bit(int nr, void *addr)
 {
 	int *a = (int *)addr;
 	int mask;
@@ -66,6 +85,26 @@ static inline void __change_bit(int nr, void *addr)
 	*ADDR ^= mask;
 }
 
+static inline void change_bit(int nr, void *addr)
+{
+	int mask;
+	unsigned long *ADDR = (unsigned long *)addr;
+
+	ADDR += nr >> 5;
+	mask = 1 << (nr & 31);
+	*ADDR ^= mask;
+}
+static inline int test_and_set_bit(int nr, void *addr)
+{
+	int mask, retval;
+	unsigned int *a = (unsigned int *)addr;
+
+	a += nr >> 5;
+	mask = 1 << (nr & 0x1f);
+	retval = (mask & *a) != 0;
+	*a |= mask;
+	return retval;
+}
 static inline int __test_and_set_bit(int nr, void *addr)
 {
 	int mask, retval;
@@ -77,7 +116,17 @@ static inline int __test_and_set_bit(int nr, void *addr)
 	*a |= mask;
 	return retval;
 }
+static inline int test_and_clear_bit(int nr, void *addr)
+{
+	int mask, retval;
+	unsigned int *a = (unsigned int *)addr;
 
+	a += nr >> 5;
+	mask = 1 << (nr & 0x1f);
+	retval = (mask & *a) != 0;
+	*a &= ~mask;
+	return retval;
+}
 static inline int __test_and_clear_bit(int nr, void *addr)
 {
 	int mask, retval;
@@ -87,6 +136,17 @@ static inline int __test_and_clear_bit(int nr, void *addr)
 	mask = 1 << (nr & 0x1f);
 	retval = (mask & *a) != 0;
 	*a &= ~mask;
+	return retval;
+}
+static inline int test_and_change_bit(int nr, void *addr)
+{
+	int mask, retval;
+	unsigned int *a = (unsigned int *)addr;
+
+	a += nr >> 5;
+	mask = 1 << (nr & 0x1f);
+	retval = (mask & *a) != 0;
+	*a ^= mask;
 	return retval;
 }
 
