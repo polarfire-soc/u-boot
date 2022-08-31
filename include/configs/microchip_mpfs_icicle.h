@@ -18,9 +18,49 @@
 
 /* Environment options */
 
+#if defined(CONFIG_CMD_DHCP)
+#define BOOT_TARGET_DEVICES_DHCP(func)	func(DHCP, dhcp, na)
+#else
+#define BOOT_TARGET_DEVICES_DHCP(func)
+#endif
+
+#if defined(CONFIG_CMD_MTD)
+# define BOOT_TARGET_DEVICES_QSPI(func) func(QSPI, qspi, na)
+#else
+# define BOOT_TARGET_DEVICES_QSPI(func)
+#endif
+
+#if defined(CONFIG_CMD_MMC)
+#define BOOT_TARGET_DEVICES_EMMC(func)	func(EMMC, mmc, 0)
+#else
+#define BOOT_TARGET_DEVICES_EMMC(func)
+#endif
+
+#define BOOTENV_DEV_QSPI(devtypeu, devtypel, instance) \
+	"bootcmd_qspi=echo Trying to boot from QSPI...; "\
+			"setenv scriptname boot.scr.uimg; " \
+			"if mtd list; then setenv mtd_present true; " \
+			"mtd read env ${scriptaddr} 0; " \
+			"source ${scriptaddr}; setenv mtd_present; " \
+			"fi\0 "
+
+#define BOOTENV_DEV_EMMC(devtypeu, devtypel, instance) \
+	"bootcmd_mmc=echo Trying to boot from eMMC/SD...;"\
+			"setenv devnum 0; setenv mmcbootpart 1; setenv scriptname boot.scr.uimg;"\
+			"if mmc rescan; then " \
+			"load mmc 0:${mmcbootpart} ${scriptaddr} ${scriptname}; source ${scriptaddr}; " \
+			"fi\0 "
+
+#define BOOTENV_DEV_NAME_QSPI(devtypeu, devtypel, instance) \
+	"qspi "
+
+#define BOOTENV_DEV_NAME_EMMC(devtypeu, devtypel, instance) \
+	"mmc "
+
 #define BOOT_TARGET_DEVICES(func) \
-	func(MMC, mmc, 0) \
-	func(DHCP, dhcp, na)
+	BOOT_TARGET_DEVICES_EMMC(func)\
+	BOOT_TARGET_DEVICES_QSPI(func)\
+	BOOT_TARGET_DEVICES_DHCP(func)
 
 #include <config_distro_bootcmd.h>
 
@@ -31,6 +71,7 @@
 	"scriptaddr=0x1008100000\0" \
 	"pxefile_addr_r=0x1008200000\0" \
 	"ramdisk_addr_r=0x1008300000\0" \
-	BOOTENV
+	"boot_script_dhcp=boot.scr.uimg\0" \
+	BOOT_TARGET_DEVICES(BOOTENV_DEV)
 
 #endif /* __CONFIG_H */
