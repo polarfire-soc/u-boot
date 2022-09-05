@@ -94,6 +94,5 @@
 	phy-handle = <&phy0>;
 	phy0: ethernet-phy@8 {
 		reg = <8>;
-		ti,fifo-depth = <0x1>;
 	};
 };
