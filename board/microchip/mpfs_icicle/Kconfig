@@ -4,10 +4,10 @@ config SYS_BOARD
 	default "mpfs_icicle"
 
 config SYS_VENDOR
-	default "microchip"
+	default "generic"
 
 config SYS_CPU
-	default "generic"
+	default "mpfs"
 
 config SYS_CONFIG_NAME
 	default "microchip_mpfs_icicle"
@@ -18,7 +18,7 @@ config SYS_TEXT_BASE
 
 config BOARD_SPECIFIC_OPTIONS # dummy
 	def_bool y
-	select GENERIC_RISCV
+	select RISCV_GENERIC
 	select BOARD_EARLY_INIT_F
 	select BOARD_LATE_INIT
 	imply SMP
