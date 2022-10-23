@@ -37,6 +37,10 @@
 	};
 };
 
+&refclk {
+	clock-frequency = <125000000>;
+};
+
 &cpu4 {
 	status = "disabled"; // in use by context b
 };
