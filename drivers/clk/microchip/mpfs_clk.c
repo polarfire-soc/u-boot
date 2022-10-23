@@ -76,7 +76,6 @@ static int mpfs_clk_disable(struct clk *clk)
 static int mpfs_clk_probe(struct udevice *dev)
 {
 	struct clk *parent_clk = dev_get_priv(dev);
-	struct clk clk_ahb = { .id = CLK_AHB };
 	struct clk clk_msspll = { .id = CLK_MSSPLL };
 	void __iomem *base;
 	void __iomem *msspll_base;
@@ -113,8 +112,7 @@ static int mpfs_clk_probe(struct udevice *dev)
 	if (ret)
 		return ret;
 
-	clk_request(dev, &clk_ahb);
-	ret = mpfs_clk_register_periphs(base, &clk_ahb);
+	ret = mpfs_clk_register_periphs(base, dev);
 
 	return ret;
 }
