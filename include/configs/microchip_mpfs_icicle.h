@@ -9,12 +9,12 @@
 
 #include <linux/sizes.h>
 
-#define CONFIG_SYS_SDRAM_BASE       0x1000000000
+#define CONFIG_SYS_SDRAM_BASE       0x80000000
 #define CONFIG_SYS_INIT_SP_ADDR     (CONFIG_SYS_SDRAM_BASE + SZ_2M)
 
 #define CONFIG_SYS_BOOTM_LEN        SZ_64M
 
-#define CONFIG_STANDALONE_LOAD_ADDR 0x1000200000
+#define CONFIG_STANDALONE_LOAD_ADDR 0x80200000
 
 /* Environment options */
 
@@ -56,11 +56,11 @@
 
 #define CONFIG_EXTRA_ENV_SETTINGS \
 	"bootm_size=0x10000000\0" \
-	"kernel_addr_r=0x1004000000\0" \
-	"fdt_addr_r=0x1008000000\0" \
-	"scriptaddr=0x1008100000\0" \
-	"pxefile_addr_r=0x1008200000\0" \
-	"ramdisk_addr_r=0x1008300000\0" \
+	"kernel_addr_r=0x84000000\0" \
+	"fdt_addr_r=0x88000000\0" \
+	"scriptaddr=0x88100000\0" \
+	"pxefile_addr_r=0x88200000\0" \
+	"ramdisk_addr_r=0x88300000\0" \
 	"boot_script_dhcp=boot.scr.uimg\0" \
 	BOOTENV \
 
