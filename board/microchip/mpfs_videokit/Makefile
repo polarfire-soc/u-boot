@@ -4,4 +4,4 @@
 # Padmarao Begari <padmarao.begari@microchip.com>
 #
 
-obj-y	+= mpfs_sevkit.o
+obj-y	+= mpfs_videokit.o

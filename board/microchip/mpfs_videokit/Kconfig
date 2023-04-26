@@ -1,7 +1,7 @@
-if TARGET_MICROCHIP_SEVKIT
+if TARGET_MICROCHIP_VIDEOKIT
 
 config SYS_BOARD
-	default "mpfs_sevkit"
+	default "mpfs_videokit"
 
 config SYS_VENDOR
 	default "microchip"
@@ -10,7 +10,7 @@ config SYS_CPU
 	default "mpfs"
 
 config SYS_CONFIG_NAME
-	default "microchip_mpfs_sevkit"
+	default "microchip_mpfs_videokit"
 
 config SYS_TEXT_BASE
 	default 0x80000000 if !RISCV_SMODE
