@@ -5,7 +5,7 @@ dtb-$(CONFIG_TARGET_ALDEC_TYSOM_M_MPFS250T) += mpfs-tysom-m.dtb
 dtb-$(CONFIG_TARGET_ARIES_M100PFSEVP) += mpfs-m100pfsevp.dtb
 dtb-$(CONFIG_TARGET_MICROCHIP_ICICLE) += microchip-mpfs-icicle-kit.dtb \
 microchip-mpfs-icicle-kit-amp.dtb microchip-mpfs-icicle-kit-qspi-nor.dtb
-dtb-$(CONFIG_TARGET_MICROCHIP_SEVKIT) += microchip-mpfs-sev-kit.dtb
+dtb-$(CONFIG_TARGET_MICROCHIP_VIDEOKIT) += microchip-mpfs-video-kit.dtb
 dtb-$(CONFIG_TARGET_QEMU_VIRT) += qemu-virt.dtb
 dtb-$(CONFIG_TARGET_OPENPITON_RISCV64) += openpiton-riscv64.dtb
 dtb-$(CONFIG_TARGET_SIFIVE_UNLEASHED) += hifive-unleashed-a00.dtb

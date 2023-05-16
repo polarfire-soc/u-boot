@@ -12,8 +12,8 @@
 #define RTCCLK_FREQ		1000000
 
 / {
-	model = "Microchip PolarFire-SoC SEV Kit";
-	compatible = "microchip,mpfs-sev-kit", "microchip,mpfs";
+	model = "Microchip PolarFire-SoC Video Kit";
+	compatible = "microchip,mpfs-video-kit", "microchip,mpfs";
 
 	aliases {
 		serial1 = &uart1;

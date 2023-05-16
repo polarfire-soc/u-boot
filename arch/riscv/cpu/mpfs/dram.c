@@ -30,8 +30,6 @@ ulong board_get_usable_ram_top(ulong total_size)
 	 * Ensure that if we run from 32-bit memory that all memory used by
 	 * U-Boot is cached addresses, but also account for the reservation at
 	 * the top of 32 bit cached DDR used by the HSS.
-	 * The SEVKIT doesn't run out of 32-bit memory however, just uses
-	 * gd->ram_top directly.
 	 */
 	if (gd->ram_top >= MPFS_TOP_OF_CACHED - MPFS_HSS_RESERVATION)
 		return MPFS_TOP_OF_CACHED - MPFS_HSS_RESERVATION - 1;
