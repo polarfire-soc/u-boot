@@ -29,6 +29,9 @@ config TARGET_MICROCHIP_VIDEOKIT
 config TARGET_SUNDANCEDSP_POLARBERRY
 	bool "Support SundanceDSP Polarberry Board (based on Microchip MPFS)"
 
+config TARGET_SUNDANCEDSP_SOM1SOC
+	bool "Support SundanceDSP SOM1SOC Board (based on Microchip MPFS)"
+
 config TARGET_ALDEC_TYSOM_M_MPFS250T
 	bool "Support Aldec TySoM M MPFS250T Board"
 
@@ -88,6 +91,7 @@ source "board/microchip/mpfs_icicle/Kconfig"
 source "board/microchip/mpfs_discokit/Kconfig"
 source "board/microchip/mpfs_videokit/Kconfig"
 source "board/sundancedsp/polarberry/Kconfig"
+source "board/sundancedsp/som1soc/Kconfig"
 source "board/sifive/unleashed/Kconfig"
 source "board/sifive/unmatched/Kconfig"
 source "board/openpiton/riscv64/Kconfig"

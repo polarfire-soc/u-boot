@@ -9,6 +9,7 @@ microchip-mpfs-icicle-kit-amp.dtb microchip-mpfs-icicle-kit-qspi-nor.dtb
 dtb-$(CONFIG_TARGET_MICROCHIP_DISCOKIT) += microchip-mpfs-disco-kit.dtb
 dtb-$(CONFIG_TARGET_MICROCHIP_VIDEOKIT) += microchip-mpfs-video-kit.dtb
 dtb-$(CONFIG_TARGET_SUNDANCEDSP_POLARBERRY) += mpfs-polarberry.dtb
+dtb-$(CONFIG_TARGET_SUNDANCEDSP_SOM1SOC) += mpfs-som1soc.dtb
 dtb-$(CONFIG_TARGET_QEMU_VIRT) += qemu-virt32.dtb qemu-virt64.dtb
 dtb-$(CONFIG_TARGET_OPENPITON_RISCV64) += openpiton-riscv64.dtb
 dtb-$(CONFIG_TARGET_SIFIVE_UNLEASHED) += hifive-unleashed-a00.dtb
